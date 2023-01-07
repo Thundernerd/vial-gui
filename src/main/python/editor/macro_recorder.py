@@ -17,8 +17,10 @@ from widgets.tab_widget_keycodes import TabWidgetWithKeycodes
 
 class MacroRecorder(BasicEditor):
 
-    def __init__(self):
+    def __init__(self, main_window):
         super().__init__()
+
+        self.main_window = main_window
 
         self.keyboard = None
         self.suppress_change = False
@@ -174,8 +176,10 @@ class MacroRecorder(BasicEditor):
         self.keyboard.reload_macros()
         self.deserialize(self.keyboard.macro)
         self.on_change()
+        self.main_window.save_profile()
 
     def on_save(self):
         Unlocker.unlock(self.device.keyboard)
         self.keyboard.set_macro(self.serialize())
         self.on_change()
+        self.main_window.save_profile()
