@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v1
       with:
-        python-version: '3.7.0'
+        python-version: '3.7.x'
 
     - name: Install dependencies
       run: |
@@ -53,7 +53,7 @@ jobs:
       run: curl https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}-macosx${MACOSX_DEPLOYMENT_TARGET}.pkg -o "python.pkg"
 
     - name: Verify download
-      run: shasum -a 256 -c <<< '4bcd53faffc98d193ef7cdccd5668de3829c702af4db45258819a84a2cab60d0 *python.pkg'
+      run: shasum -a 256 -c <<< 'ee4ad46ab8cd226ffc8df56d48acfdf7daa2714a9c51e6dc6262fc0b25519578 *python.pkg'
 
     - name: Install Python
       run: |
@@ -83,7 +83,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v1
       with:
-        python-version: '3.7.0'
+        python-version: '3.7.x'
 
     - name: Setup venv
       run: |
