@@ -97,7 +97,12 @@ jobs:
         if ((Get-FileHash nsis-3.06.1-setup.exe -Algorithm sha256).Hash -ne "f60488a676308079bfdf6845dc7114cfd4bbff47b66be4db827b89bb8d7fdc52") { Write-Error 'SHA256 mismatch' }
         Start-Process -FilePath "nsis-3.06.1-setup.exe" -ArgumentList "/S", "/D=C:\Program Files (x86)\NSIS" -NoNewWindow -Wait
 
-    - name: Build
+    - name: Freeze
+      run: |
+        . .\venv\Scripts\activate.ps1
+        fbs freeze
+
+    - name: Compress
       run: |
         . .\venv\Scripts\activate.ps1
         fbs freeze
