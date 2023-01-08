@@ -25,10 +25,11 @@ class ClickableWidget(QWidget):
 
 class KeymapEditor(BasicEditor):
 
-    def __init__(self, layout_editor):
+    def __init__(self, layout_editor, main_window):
         super().__init__()
 
         self.layout_editor = layout_editor
+        self.main_window = main_window
 
         self.layout_layers = QHBoxLayout()
         self.layout_size = QVBoxLayout()
@@ -199,6 +200,7 @@ class KeymapEditor(BasicEditor):
         else:
             self.set_key_matrix(keycode)
 
+        self.main_window.save_profile()
         self.container.select_next()
 
     def set_key_encoder(self, keycode):
