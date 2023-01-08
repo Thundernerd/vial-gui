@@ -9,3 +9,4 @@ pyqt5==5.15.7
 simpleeval==0.9.12
 pyinstaller==4.10
 pywin32==304; sys_platform == 'win32'
+PyWinCtl==0.0.42
